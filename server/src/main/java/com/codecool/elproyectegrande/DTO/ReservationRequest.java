@@ -8,7 +8,7 @@ public class ReservationRequest {
     private Long clientId;
     private Reservation reservation;
 
-    public ReservationRequest(@JsonProperty("clientId") Long clientId, Reservation reservation) {
+    public ReservationRequest(@JsonProperty("clientId") Long clientId, @JsonProperty("reservation") Reservation reservation) {
         this.clientId = clientId;
         this.reservation = reservation;
     }

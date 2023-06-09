@@ -36,37 +36,19 @@ public class WebSecurityConfig {
         http.cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests()
-//                .requestMatchers(
-//                        "/api/clients/**"
-//                        , "/properties/**"
-//                        , "api/accounts/login"
-//                        , "api/accounts/register")
-                .anyRequest()
+                .requestMatchers(
+                        "/api/clients/**"
+                        , "/properties/**"
+                        , "api/accounts/login"
+                        , "api/accounts/register")
                 .permitAll()
-//                .requestMatchers(
-//                        "/properties/*/reservations"
-//                )
-//                .authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
                 .and().exceptionHandling().disable();
         return http.build();
     }
-
-//    @Bean
-//    @Order(1)
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/greeting-javaconfig")
-//                        .allowedOrigins("http://localhost:3000/**", "http://localhost:3000/properties/*/reservations")
-//                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-//                        .allowedHeaders("*")
-//                        .allowCredentials(true);
-//            }
-//        };
-//    }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
