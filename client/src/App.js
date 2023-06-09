@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import ClientsPage from "./pages/ClientsPage";
 import ClientPage from "./pages/ClientPage";
 import UserLoginRegistrationPage from "./pages/UserLoginRegistrationPage";
+import LogoutClient from "./components/LogoutClient"
 // import RegisterPage from "./pages/RegisterPage";
 import InputForm from "./components/InputForm";
 import Navbar from "./components/Navbar";
@@ -28,6 +29,7 @@ function App() {
                     {/*<Route path="/api/clients/register-form" element={< RegisterPage/>}/>*/}
                     <Route path="/api/clients/register" element={< InputForm/>}/>
                     <Route path="/api/clients/:id/edit-client-info" element={< EditClientInfo/>}/>
+                    <Route path="/api/clients/logout" element={<LogoutClient/>}/>
                     <Route path="*" element={<NoPageFound/>}/>
                 </Routes>
                 <Footer/>

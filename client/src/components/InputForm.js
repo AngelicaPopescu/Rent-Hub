@@ -65,9 +65,7 @@ export default function InputForm() {
                     }),
                     // credentials: "include"
                 })
-                    .then(r => r.json())
-                    .then(d => setData(d))
-                    .catch(error => setErrorMessage(error.message));
+                const data  = await response.json();
                 console.log("data: "+data);
                 if (data.length > 0) {
                     sessionStorage.setItem('token', data[0])

@@ -24,7 +24,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ClientService implements UserDetailsService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 
     private final ClientRepository clientRepository;
@@ -51,18 +50,16 @@ public class ClientService implements UserDetailsService {
             throw new IllegalStateException("email already taken");
         }
 
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(client.getPassword());
-
-        client.setPassword(encodedPassword);
+        client.setPassword(PasswordEncoder.passwordEncoder(client.getPassword()));
 
         clientRepository.save(client);
 
     }
 
+
     public String logInUser(String email, String password) {
         var user = clientRepository.findByEmailAddress(email);
-        if (user.isEmpty() || !bCryptPasswordEncoder.matches(password, user.get().getPassword())) {
+        if (user.isEmpty() || !PasswordEncoder.matches(password, user.get().getPassword())) {
             throw new IllegalStateException("email-password combination is not a match");
         }
 
