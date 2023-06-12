@@ -27,9 +27,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/properties")
-//@CrossOrigin(origins = "http://localhost:3000"
-//        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
-//        , RequestMethod.POST, RequestMethod.PATCH}, allowedHeaders = "*", allowCredentials = "true")
 public class PropertyController {
     private final PropertyService propertyService;
 
@@ -70,7 +67,8 @@ public class PropertyController {
 
     @PostMapping(value = "/{propertyId}/reservations", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
-        System.out.println(reservationRequest);
+        System.out.println(reservationRequest.getClientId());
+        System.out.println(reservationRequest.getReservation().getCheckOut());
         try {
             Reservation savedReservation = propertyService.addReservation(propertyId, reservationRequest);
             return ResponseEntity.ok(savedReservation);

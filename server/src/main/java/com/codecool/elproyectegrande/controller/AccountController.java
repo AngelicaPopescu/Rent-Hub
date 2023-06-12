@@ -25,9 +25,6 @@ import java.util.stream.Stream;
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "api/accounts")
-@CrossOrigin(origins = "http://localhost:3000"
-        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
-        , RequestMethod.POST, RequestMethod.PATCH})
 public class AccountController {
 
     RegistrationService registrationService;
