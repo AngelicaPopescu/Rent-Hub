@@ -3,7 +3,6 @@ import './PropertyList.css';
 import { Link, useLocation } from "react-router-dom"
 
 
-
 function PropertyList() {
 
     const [propertyData, setPropertyData] = useState([]);

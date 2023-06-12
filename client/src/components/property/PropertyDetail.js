@@ -91,7 +91,7 @@ export default function PropertyDetail() {
             <PropertyDescription description={props.description}/> 
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-4 right-part-page">
                 <Maps location={location} />
                 <ReservationForm propertyId={id} />
                 <PropertyReviews reviews={props.reviews}/>

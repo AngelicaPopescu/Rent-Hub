@@ -33,3 +33,7 @@ label input , .reservation-button {
   color: white !important;
   background-color: black !important;
 }
+
+.reservation-form {
+  padding-top: 5vh;
+}
