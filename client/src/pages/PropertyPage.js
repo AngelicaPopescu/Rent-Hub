@@ -1,4 +1,4 @@
-import PropertyDetail from "../components/PropertyDetail";
+import PropertyDetail from "../components/property/PropertyDetail";
 import React from "react";
 
 

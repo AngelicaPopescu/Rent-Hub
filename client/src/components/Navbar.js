@@ -1,12 +1,14 @@
 import React from "react";
+import './Navbar.css';
 import logoText from "../images/logos/logoText.png"
 import logoImage from "../images/logos/logoImage.png"
-import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
-import Button from '@mui/material/Button';
 
-import './Navbar.css';
+
+
+const userId = sessionStorage.getItem("clientId");
+console.log(userId)
 
 export default function Navbar() {
     return (
@@ -20,17 +22,6 @@ export default function Navbar() {
                     <img height={50} width={150} src={logoText} alt={"logo"}/>
                 </a>
             </div>
-
-            {/*<div className="navbarSearch">*/}
-            {/*    <div className="search">*/}
-            {/*        <TextField*/}
-            {/*            id="outlined-basic"*/}
-            {/*            variant="outlined"*/}
-            {/*            fullWidth*/}
-            {/*            label="Search"*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*</div>*/}
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
             <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
@@ -63,9 +54,10 @@ export default function Navbar() {
                         className="material-icons"><PeopleIcon/></i></a>
                 </li>
                 <li className="border-t md:border-none">
-                    <a href="http://localhost:3000/api/clients/register"
-                       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
-                        className="material-icons"><AccountCircleIcon/></i></a>
+                <a href={userId ? `http://localhost:3000/api/clients/${userId}` : "http://localhost:3000/api/clients/register"}
+                    className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
+                    <i className="material-icons"><AccountCircleIcon/></i>
+                </a>
                 </li>
 
             </ul>

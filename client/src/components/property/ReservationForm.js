@@ -24,10 +24,11 @@ const ReservationForm = ({ propertyId }) => {
     e.preventDefault();
     try {
       const response = await axios.post(`http://localhost:8080/properties/${propertyId}/reservations`, {
-        propertyId,
         clientId: sessionStorage.getItem('clientId'),
-        checkIn,
-        checkOut
+        reservation: {
+          checkIn,
+          checkOut
+        }
       },
       {
         headers: {
@@ -40,33 +41,12 @@ const ReservationForm = ({ propertyId }) => {
       if (error.response) {
         console.error(error.response.data);
         setErrorMessage(error.response.data.message);
-      } else {
-        if (error.response) {
-          // Server responded with an error status code
-          if (error.response.status === 400) {
-            // Handle specific error cases (e.g., validation errors)
-            setErrorMessage('Bad request. Please check your input.');
-          } else if (error.response.status === 404) {
-            // Handle specific error cases (e.g., resource not found)
-            setErrorMessage('The requested resource was not found.');
-          } else {
-            // Handle other error cases with status code
-            setErrorMessage('An error occurred. Please try again.');
-          }
-        } else if (error.request) {
-          // The request was made, but no response was received
-          setErrorMessage('No response received from the server. Please try again.');
-        } else {
-          // Something else happened while setting up the request
-          console.error('Error:', error.message);
-          setErrorMessage('An error occurred. Please try again.');
-        }
-      }
+      } 
     }
   };
 
   return (
-    <div>
+    <div className='reservation-form'>
       <form onSubmit={handleSubmit}>
         <div className='reservation-dates'>
           <label>

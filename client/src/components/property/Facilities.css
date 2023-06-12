@@ -1,0 +1,10 @@
+.property_facilities {
+    display: inline;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.facilities {
+    padding-top: 5vh;
+    padding-left: 8vh;
+}

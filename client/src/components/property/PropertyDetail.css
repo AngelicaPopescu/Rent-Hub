@@ -1,0 +1,12 @@
+body {
+    overflow-x: hidden;
+}
+.m-2_propertyDetailDescription, .property__about{
+    padding-top: 5vh;
+    padding-left: 8vh;
+}
+
+.property__about-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}

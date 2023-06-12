@@ -1,0 +1,12 @@
+.property__name {
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 8vh;
+    padding-top: 4vh;
+}
+
+.property__rating{
+    padding-top: 2vh;
+    padding-left: 8vh;
+    padding-bottom: 2vh;
+}
