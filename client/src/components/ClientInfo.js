@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import './ClientInfo.css';
+import Reservatios from './Reservations';
 
 export default function ClientInfo() {
 
@@ -141,6 +142,11 @@ export default function ClientInfo() {
                 </div>
 
             </div>
+
+            <div>
+                <Reservatios/>
+            </div>
+
         </div>
     );
     } else {

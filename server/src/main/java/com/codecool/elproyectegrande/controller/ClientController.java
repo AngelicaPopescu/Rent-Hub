@@ -1,7 +1,9 @@
 package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Client;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.service.ClientService;
+import com.codecool.elproyectegrande.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +14,12 @@ import java.util.List;
 public class ClientController {
 
     ClientService clientService;
-
+    ReservationService reservationService;
 
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, ReservationService reservationService) {
         this.clientService = clientService;
+        this.reservationService = reservationService;
     }
 
     @GetMapping
@@ -49,6 +52,11 @@ public class ClientController {
     @PutMapping("/{id}")
     public Client updateClientData(@PathVariable Long id, @RequestBody Client client){
         return clientService.updateClientData(id, client);
+    }
+
+    @GetMapping("/{id}/reservations")
+    public List<Reservation> getReservationForClient(@PathVariable Long id) {
+        return reservationService.getReservationForClient(id);
     }
 
 //    @PostMapping("/register")

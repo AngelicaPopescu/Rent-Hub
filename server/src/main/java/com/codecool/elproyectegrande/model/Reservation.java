@@ -2,20 +2,16 @@ package com.codecool.elproyectegrande.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Getter
@@ -31,6 +27,7 @@ public class Reservation {
     //TODO validari hibernate
     private LocalDate checkIn;
     private LocalDate checkOut;
+    private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -40,6 +37,17 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "property_id")
-    @JsonIgnore
     private Property property;
+
+    @PrePersist
+    @PreUpdate
+    private void  calculatePrice() {
+        price = calculatePriceBasedOnDates();
+    }
+
+    private BigDecimal calculatePriceBasedOnDates() {
+        long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
+        return property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
+    }
+
 }

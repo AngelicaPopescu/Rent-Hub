@@ -39,4 +39,7 @@ public class ReservationService {
         return reservation;
     }
 
+    public List<Reservation> getReservationForClient(Long id) {
+        return reservationRepository.findByClientId(id);
+    }
 }
