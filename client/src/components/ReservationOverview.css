@@ -1,0 +1,31 @@
+.reservation-card, .reservation__details {
+    display: flex;
+}
+
+.reservation-card img, .reservation-card {
+    margin-right: 10px;
+}
+
+.reservation-card {
+    padding-bottom: 10vh;
+}
+  
+.reservation-card img {
+    width: 300px;
+    height: 200px;
+    max-width: 100%;
+    object-fit: cover;
+}
+  
+.reservation__details {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.status-pending {
+    color: red;
+}
+
+.status-completed {
+    color: green;
+}

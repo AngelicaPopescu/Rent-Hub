@@ -12,10 +12,6 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface ClientRepository extends JpaRepository<Client, Long>{
 
-//    Client findByEmailAddress(String emailAddress);
-
-//    Optional<Client> findByEmail(String email);//de la Cata
-
     Optional<Client> findByEmailAddress(String email);
 
 

@@ -28,6 +28,7 @@ public class Reservation {
     private LocalDate checkIn;
     private LocalDate checkOut;
     private BigDecimal price;
+    private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -43,11 +44,21 @@ public class Reservation {
     @PreUpdate
     private void  calculatePrice() {
         price = calculatePriceBasedOnDates();
+        updateStatus();
     }
 
     private BigDecimal calculatePriceBasedOnDates() {
         long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
         return property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
+    }
+
+    private void updateStatus() {
+        LocalDate currentDate = LocalDate.now();
+        if (checkOut.isBefore(currentDate)) {
+            status = "Completed";
+        } else {
+            status = "Upcoming";
+        }
     }
 
 }

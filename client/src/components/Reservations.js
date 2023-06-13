@@ -37,6 +37,7 @@ export default function Reservatios() {
 
     return (
         <div className="reservation">
+            <p><strong>My reservations</strong></p>
               {props.map((reservation) => {
                     return (
                         < ReservationOverview reservation={reservation} />

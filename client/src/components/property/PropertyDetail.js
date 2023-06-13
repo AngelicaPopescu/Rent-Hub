@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 import './PropertyDetail.css'
 import Maps from "./Maps"
 import ReservationForm from "./ReservationForm";
-import ReviewForm from "./ReviewForm";
 import Carousel from "./PropertyImagesCarousel";
 import Facilities from "./Facilities"
 import PropertyDescription from "./PropertyDescription"
@@ -53,24 +52,6 @@ export default function PropertyDetail() {
                 console.error(error);
             });
     }, [id]);
-    
-    const updateprops = () => {
-        const url = `http://localhost:8080/properties/${id}`;
-        fetch(url)
-          .then(response => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error(`HTTP error ${response.status}`);
-            }
-          })
-          .then(data => {
-            setprops(data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
 
       
     if (!props) {
@@ -95,7 +76,6 @@ export default function PropertyDetail() {
                 <Maps location={location} />
                 <ReservationForm propertyId={id} />
                 <PropertyReviews reviews={props.reviews}/>
-                <ReviewForm propertyId={id} onUpdate={updateprops}/>
           </div>
 
         </div>

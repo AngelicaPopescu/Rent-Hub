@@ -58,8 +58,6 @@ public class PropertyController {
 
     @PostMapping(value = "/{propertyId}/reservations", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
-        System.out.println(reservationRequest.getClientId());
-        System.out.println(reservationRequest.getReservation().getCheckOut());
         try {
             Reservation savedReservation = propertyService.addReservation(propertyId, reservationRequest);
             return ResponseEntity.ok(savedReservation);

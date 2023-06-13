@@ -59,50 +59,5 @@ public class ClientController {
         return reservationService.getReservationForClient(id);
     }
 
-//    @PostMapping("/register")
-//    public String registerClient(@RequestBody Client client) {
-//        try {
-//            clientService.registerClient(
-//                    client.getName()
-//                    , client.getSurname()
-//                    , client.getEmailAddress()
-//                    , client.getPhoneNumber()
-//                    , client.getPassword());
-//            return "redirect:/login-form";
-//        } catch (ClientException e) {
-//            System.out.println("message" + e.getMessage());
-//            return "register-form";
-//        }
-//    }
-
-
-//    @PostMapping("/login")
-//    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
-//        if (result.hasErrors()) {
-//            return "login-form";
-//        }
-//
-//        try {
-//            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
-//            session.setAttribute("client", authenticatedClient);
-//            return "redirect:/home";
-//        } catch (ClientException e) {
-//            model.addAttribute("message", e.getMessage());
-//            return "login-form";
-//        }
-//    }
-//
-//    @GetMapping("/home")
-//    public RedirectView showHomePage(HttpSession session, Model model) {
-//        Client client = (Client) session.getAttribute("client");
-//        if (client == null) {
-//            return new RedirectView("/api/clients/login-form");
-//        }
-//
-//        model.addAttribute("client", client);
-////        return "home";
-//        return new RedirectView("/properties");
-//    }
-
 
 }

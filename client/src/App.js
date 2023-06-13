@@ -13,6 +13,7 @@ import InputForm from "./components/InputForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EditClientInfo from"./components/EditClientInfo"
+import PaymentPage from "./components/PaymentPage"
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/api/clients/register" element={< InputForm/>}/>
                     <Route path="/api/clients/:id/edit-client-info" element={< EditClientInfo/>}/>
                     <Route path="/api/clients/logout" element={<LogoutClient/>}/>
+                    <Route path="/payment" element={< PaymentPage/>} />
                     <Route path="*" element={<NoPageFound/>}/>
                 </Routes>
                 <Footer/>
