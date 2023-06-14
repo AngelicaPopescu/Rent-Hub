@@ -1,4 +1,4 @@
-package com.codecool.elproyectegrande.email;
+package com.codecool.elproyectegrande.service;
 
 import org.springframework.stereotype.Service;
 
@@ -11,4 +11,5 @@ public class EmailValidator implements Predicate<String> {
     public boolean test(String s) {
         return s.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     }
+
 }

@@ -5,20 +5,30 @@ import Rating from 'react-rating-stars-component';
 
 
 const ReviewForm = ({ propertyId }) => {
-  const { id } = useParams();
 
   const [description, setDescription] = useState('');
   const [satisfaction, setSatisfaction] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const clientId = useParams();
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:8080/properties/${propertyId}/reviews`, {
-        propertyId,
-        description,
-        satisfaction,
+      const response = await axios.post(`http://localhost:8080/api/clients/${clientId.id}/reviews`, {
+      propertyId,
+      review: {
+          description,
+          satisfaction
+      }
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       setErrorMessage('');
       setShowForm(false);

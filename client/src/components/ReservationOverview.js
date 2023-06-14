@@ -36,7 +36,7 @@ function ReservationOverview({ reservation }) {
                     <p className={ statusClassName }>{ reservation.status }</p>
 
                     {reservation.status === 'Completed' && (
-                        < ReviewForm />
+                        < ReviewForm propertyId={ reservation.property.id }  />
                     )}
                 </div>
         </div>

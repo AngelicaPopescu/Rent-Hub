@@ -19,7 +19,6 @@ import java.util.List;
 @Configuration(enforceUniqueMethods = false)
 @AllArgsConstructor
 @EnableWebSecurity
-@EnableMethodSecurity
 public class WebSecurityConfig {
 
 

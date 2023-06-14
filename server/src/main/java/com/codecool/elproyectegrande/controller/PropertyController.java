@@ -41,10 +41,6 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/{propertyId}/reviews")
-    public void addPropertyReview(@PathVariable Long propertyId, @RequestBody Review review) {
-        propertyService.addReviewForProperty(propertyId, review);
-    }
 
     @GetMapping(params = "category")
     public List<Property> getPropertiesByCategory(@RequestParam("category") String category) {
@@ -64,7 +60,7 @@ public class PropertyController {
         } catch (ReservationConflictException e) {
             return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); //gestionează orice altă excepție care nu este capturată în blocul anterior
         }
     }
 

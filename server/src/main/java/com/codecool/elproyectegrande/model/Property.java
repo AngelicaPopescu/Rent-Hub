@@ -13,6 +13,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -75,7 +77,7 @@ public class Property {
 
     public void setRating() {
         double sum = 0;
-        for (Review review : reviews) {
+        for (Review review : getReviews()) {
             sum += review.getSatisfaction();
         }
         this.rating = Math.round((sum / reviews.size()) * 100.0) / 100.0;

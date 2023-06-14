@@ -1,7 +1,6 @@
 package com.codecool.elproyectegrande.service;
 
 
-import com.codecool.elproyectegrande.email.EmailValidator;
 import com.codecool.elproyectegrande.model.Client;
 import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.registration.LogInRequest;

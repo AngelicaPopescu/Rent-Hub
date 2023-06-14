@@ -40,13 +40,7 @@ public class PropertyService {
                 property.getCategories().contains(category1)).collect(Collectors.toList());
     }
 
-    public void addReviewForProperty(Long id, Review review) {
-        Property property = propertyRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Property not found with id: " + id));
-        review.setProperty(property);
-        //TODO check it ;)
-//        reviewRepository.save(review);
-
+    public void updateRating(Property property) {
         property.setRating();
         propertyRepository.save(property);
     }

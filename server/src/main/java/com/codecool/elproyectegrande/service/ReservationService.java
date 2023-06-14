@@ -16,6 +16,12 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     public Reservation createReservation(Reservation reservation) throws ReservationConflictException {
+        validateReservation(reservation);
+        saveReservation(reservation);
+        return reservation;
+    }
+
+    private void validateReservation(Reservation reservation) throws ReservationConflictException {
         List<Reservation> overlappingReservations = reservationRepository
                 .findByPropertyIdAndCheckOutAfterAndCheckInBefore(
                         reservation.getProperty().getId(),
@@ -35,11 +41,14 @@ public class ReservationService {
                 throw new ReservationConflictException("The selected period is unavailable");
             }
         }
+    }
+
+    private void saveReservation(Reservation reservation) {
         reservationRepository.save(reservation);
-        return reservation;
     }
 
     public List<Reservation> getReservationForClient(Long id) {
         return reservationRepository.findByClientId(id);
     }
+
 }
